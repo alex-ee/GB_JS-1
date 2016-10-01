@@ -1,7 +1,8 @@
 "use strict";
 
-dz2_2();
 dz2_3();
+dz3_1();
+dz3_2();
 
 function dz1() {
     var admin, name = "Василий";
@@ -43,9 +44,17 @@ function dz2_2() {
 
 function dz2_3() {
     for (var i = 1; i <= 100; i++) {
-        // Fizz | Buzz
+        // Fizz  Buzz
+
+        console.log (((i % 3 == 0) && (i % 5 == 0)) ? "" + i + "   FizzBuzz" :
+            (i % 3 == 0) ? "" + i + "   Fizz" :
+                (i % 5 == 0) ? "" + i + "   Buzz" :
+                    i
+        );
 /*
-        if (i % 3 == 0) {
+        if ((i % 3 == 0) && (i % 5 == 0)) {
+            console.log ("" + i + "   FizzBuzz");
+        } else if (i % 3 == 0) {
             console.log ("" + i + "   Fizz");
         } else if (i % 5 == 0) {
             console.log ("" + i + "   Buzz");
@@ -53,11 +62,27 @@ function dz2_3() {
             console.log (i);
         }
 */
-        //Fizz & Buzz
-        if ((i % 3 == 0) || (i % 5 == 0)) {
-            console.log ("" + i + "   FizzBuzz");
-        } else {
-            console.log (i);
-        }
     }
+}
+
+function dz3_1() {
+    var str = '';
+    do {
+        console.log (str += '#');
+
+    } while (str.length <= 7);
+}
+
+function dz3_2() {
+    var str = '', ret = '', i = 1, j = 1;
+    while (j++ <= 8) {
+        while (++i <= 8) {
+            str += (i % 2 == 0) ? '#' : ' ';
+        }
+        ret += str + '\n';
+        i = 1;
+        str = (j % 2 == 0) ? ' ' : '';
+    }
+
+    console.log (ret);
 }
