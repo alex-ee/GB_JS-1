@@ -83,6 +83,6 @@ function dz3_2() {
         i = 1;
         str = (j % 2 == 0) ? ' ' : '';
     }
-
+    
     console.log (ret);
 }
