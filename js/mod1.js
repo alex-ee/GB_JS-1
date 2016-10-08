@@ -1,8 +1,7 @@
 "use strict";
 
-dz4_1();
-dz4_2();
-dz4_3();
+dz5_1();
+dz5_2();
 
 function dz1() {
     var admin, name = "Василий";
@@ -140,4 +139,85 @@ function dz4_3() {
     console.log (
         'чётность (-1) = ' + isEven (-1) + ' (фикс в том чтобы брать по модулю)'
     );
+}
+
+function dz5_1() {
+    function decToHex() {
+        return arguments[0].toString(16) + arguments[1].toString(16) + arguments[2].toString(16);
+    }
+
+    console.log (
+        'decToHex(244,200,100) = ' + decToHex(244,200,100)
+    );
+
+    console.log (
+        'decToHex(255,255,255) = ' + decToHex(255,255,255)
+    );
+
+    console.log (
+        'decToHex(0,0,0) = ' + decToHex(0,0,0)
+    );
+
+    console.log ('==========================================');
+}
+
+function dz5_2() {
+    function IntToObj(int) {
+        var obj = {
+            единицы: 0,
+            десятки: 0,
+            сотни: 0,
+        }
+
+        if (int <= 999) {
+            int += '';
+            switch (int.length) {
+                case 2:
+                    obj.десятки = int.charAt(0);
+                    obj.единицы = int.charAt(1);
+                    break;
+
+                case 1:
+                    obj.единицы = int.charAt(0);
+                    break;
+
+                default:
+                    obj.сотни = int.charAt(0);
+                    obj.десятки = int.charAt(1);
+                    obj.единицы = int.charAt(2);
+                    break;
+            }
+
+        } else {
+            console.log ('число превышает 999');
+
+        }
+        
+        return obj;
+    }
+
+    console.log ('IntToObj(1) = ');
+    console.log (IntToObj(1));
+
+    console.log ('IntToObj(21) = ');
+    console.log (IntToObj(21));
+
+    console.log ('IntToObj(321) = ');
+    console.log (IntToObj(321));
+
+    console.log ('IntToObj(1111) = ');
+    console.log (IntToObj(1111));
+
+    console.log ('==========================================');
+
+    console.log ('objectToQueryString(321) = ');
+    console.log (objectToQueryString(IntToObj(321)));
+
+    function objectToQueryString(obj) {
+        var str = '';
+        for (var key in obj) {
+            str += key + '=' + obj[key] + '&';
+        }
+        return str.substr (0, str.length - 1);
+    }
 }
