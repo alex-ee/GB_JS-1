@@ -1,7 +1,9 @@
 "use strict";
 
-dz5_1();
-dz5_2();
+dz6_1();
+dz6_2();
+dz6_3();
+
 
 function dz1() {
     var admin, name = "Василий";
@@ -11,6 +13,7 @@ function dz1() {
 
     alert(admin);
 }
+
 
 function dz2_1() {
     var a = 1, b = 1, c, d;
@@ -34,12 +37,14 @@ function dz2_1() {
     // 'b' стало = 3 при 'd = (2+ b++);'
 }
 
+
 function dz2_2() {
     var a = 2;
     var x = 1 + (a *= 2); // = 1 + ('a' * 2) = 5
 
     alert('"х" равен "' + x + '"');
 }
+
 
 function dz2_3() {
     for (var i = 1; i <= 100; i++) {
@@ -54,6 +59,7 @@ function dz2_3() {
     }
 }
 
+
 function dz3_1() {
     var str = '';
     do {
@@ -61,6 +67,7 @@ function dz3_1() {
 
     } while (str.length <= 7);
 }
+
 
 function dz3_2() {
     var str = '', ret = '', i = 1, j = 1;
@@ -76,6 +83,7 @@ function dz3_2() {
     console.log (ret);
 }
 
+
 function dz4_1() {
     function min() {
         return (arguments[0] <= arguments[1]) ? arguments[0] : arguments[1];
@@ -85,6 +93,7 @@ function dz4_1() {
     console.log (min(0, 10));
     console.log (min(0, -10));
 }
+
 
 function dz4_2() {
     function countChr (str, chr) {
@@ -110,6 +119,7 @@ function dz4_2() {
         'буква "e" в строке "Test test test" встречается ' + countChr ('Test test test','e') + " раз(а)"
     );
 }
+
 
 function dz4_3() {
     function isEven (int) {
@@ -141,6 +151,7 @@ function dz4_3() {
     );
 }
 
+
 function dz5_1() {
     function decToHex() {
         return arguments[0].toString(16) + arguments[1].toString(16) + arguments[2].toString(16);
@@ -161,8 +172,9 @@ function dz5_1() {
     console.log ('==========================================');
 }
 
+
 function dz5_2() {
-    function IntToObj(int) {
+    function IntToObj (int) {
         var obj = {
             единицы: 0,
             десятки: 0,
@@ -196,28 +208,175 @@ function dz5_2() {
         return obj;
     }
 
-    console.log ('IntToObj(1) = ');
-    console.log (IntToObj(1));
+    console.log ('IntToObj (1) = ');
+    console.log (IntToObj (1));
 
-    console.log ('IntToObj(21) = ');
-    console.log (IntToObj(21));
+    console.log ('IntToObj (21) = ');
+    console.log (IntToObj (21));
 
-    console.log ('IntToObj(321) = ');
-    console.log (IntToObj(321));
+    console.log ('IntToObj (321) = ');
+    console.log (IntToObj (321));
 
-    console.log ('IntToObj(1111) = ');
-    console.log (IntToObj(1111));
+    console.log ('IntToObj (1111) = ');
+    console.log (IntToObj (1111) );
 
     console.log ('==========================================');
 
-    console.log ('objectToQueryString(321) = ');
-    console.log (objectToQueryString(IntToObj(321)));
+    console.log ('objectToQueryString (321) = ');
+    console.log (objectToQueryString (IntToObj (321) ) );
 
-    function objectToQueryString(obj) {
+    function objectToQueryString (obj) {
         var str = '';
         for (var key in obj) {
             str += key + '=' + obj[key] + '&';
         }
         return str.substr (0, str.length - 1);
     }
+}
+
+
+function dz6_1() {
+    function arrayToList (array, prev_list) {
+        var list = {};
+
+        if (array.length === 1) {
+            list.val = array.shift();
+            list.prev = prev_list;
+
+        } else if (array.length > 1) {
+            list.val = array.shift();
+            list.next = arrayToList (array, list);
+            list.prev = prev_list;
+
+        } else {
+            console.log ('массив пустой!');
+
+        }
+
+        return list;
+    }
+    
+    console.log ('arrayToList ([1,2,3,4]) = ');
+    console.log (arrayToList ([1,2,3,4], null) );
+
+    console.log ('==========================================');
+
+    console.log ('arrayToList ([]) = ');
+    console.log (arrayToList ([], null) );
+
+    console.log ('==========================================');
+    
+    function listToArray (list) {
+        var array = [];
+
+        if (Object.keys(list).length == 0) {
+            console.log ('лист пустой!'); 
+
+        } else if (list.next === undefined) {
+            array = array.concat (list.val);
+
+        } else {
+            array = array.concat (list.val, listToArray (list.next) );
+
+        }
+
+        return array;
+
+    }
+
+    console.log ('listToArray (arrayToList ([1,2,3,4]) ) = ');
+    console.log (listToArray (arrayToList ([1,2,3,4], null)));
+
+    console.log ('==========================================');
+
+    console.log ('listToArray (arrayToList ([]) ) = ');
+    console.log (listToArray (arrayToList ([], null)));
+
+    console.log ('==========================================');
+
+    function prepend(element, list) {
+        var array = element.concat(listToArray (list));
+
+        return arrayToList (array, null);        
+    }
+
+    console.log ('prepend([123], arrayToList ([1,2,3,4]) ) = ');
+    console.log (prepend([123], arrayToList ([1,2,3,4], null)));
+
+    console.log ('==========================================');
+
+    function nth(pos, list) {
+        return (--pos == 0) ? (list === undefined) ? undefined : list.val : nth (pos, list.next);
+    }
+
+    console.log ('nth (3, arrayToList ([1,2,3,4], null)) = ');
+    console.log (nth (3, arrayToList ([1,2,3,4], null)));
+
+    console.log ('==========================================');
+
+    console.log ('nth (5, arrayToList ([1,2,3,4], null)) = ');
+    console.log (nth (5, arrayToList ([1,2,3,4], null)));
+
+    console.log ('==========================================');
+
+}
+
+
+function dz6_2() {
+    function reverseArray(array) {
+        var arr = array.reverse();
+
+        return arr;        
+    }
+
+    function reverseArrayInPlace(array) {
+        var arr = [];
+
+        return array.length == 1 ? arr.concat(array.pop()) : arr.concat(array.pop(), reverseArrayInPlace(array));        
+    }
+
+    console.log ('reverseArray([1,2,3,4,5,6]) =   // штатный реверсер');
+    console.log (reverseArray([1,2,3,4,5,6]));
+
+    console.log ('==========================================');
+
+    console.log ('reverseArrayInPlace([1,2,3,4,5,6]) =   // своя реализация');
+    console.log (reverseArrayInPlace([1,2,3,4,5,6]));
+
+    console.log ('==========================================');
+    
+}
+
+
+function dz6_3() {
+    function filterObj(obj, strFilter) {
+        var obj1 = {};
+
+        console.log ('фильтруемый объект: ');
+        console.log (obj);
+
+        for (var key in obj) {
+            for (var i in strFilter) {
+                if (key == strFilter[i]) {
+                    obj1[key] = obj[key];
+                    break;
+                }
+            }
+        }
+        
+        console.log ('отфильтрованный по ["age", "showAge"] объект: ');
+        return obj1;
+    }
+
+    console.log (
+        filterObj (
+            {
+                name: 'Alex',
+                age: 25,
+                showAge: function() {
+                    console.log (this.age);
+                }
+            }, ['age', 'showAge']
+        )
+    );    
 }
