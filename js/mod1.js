@@ -324,9 +324,17 @@ function dz6_1() {
 
 function dz6_2() {
     function reverseArray(array) {
-        var arr = array.reverse();
+        //var arr = array.reverse();
 
-        return arr;        
+        //return arr;
+
+        console.log ('массив до реверса = ');
+        console.log (array);
+
+        array = reverseArrayInPlace(array);
+        
+        console.log ('массив после реверса = ');
+        console.log (array);        
     }
 
     function reverseArrayInPlace(array) {
@@ -335,8 +343,8 @@ function dz6_2() {
         return array.length == 1 ? arr.concat(array.pop()) : arr.concat(array.pop(), reverseArrayInPlace(array));        
     }
 
-    console.log ('reverseArray([1,2,3,4,5,6]) =   // штатный реверсер');
-    console.log (reverseArray([1,2,3,4,5,6]));
+    //console.log('reverseArray([1,2,3,4,5,6]) =   // штатный реверсер');
+    reverseArray ([1, 2, 3, 4, 5, 6]);
 
     console.log ('==========================================');
 
