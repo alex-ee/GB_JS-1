@@ -1,0 +1,95 @@
+.board {
+    width: 640px;
+    height: 640px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border: 3px solid black;
+    float: left;
+}
+
+.dark {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: saddlebrown;
+    text-align: center;    
+    line-height: 82px;
+    font-size: 80px;
+    float: left;
+}
+
+.light {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: sandybrown;
+    text-align: center;
+    line-height: 82px;
+    font-size: 80px;
+    float: left;
+}
+
+.hLegend {
+    width: 706px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: saddlebrown;
+    float: left;  
+}
+
+.vLegend {
+    width: 30px;
+    height: 646px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: saddlebrown;
+    float: left;
+}
+
+.sq {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float: left;
+}
+
+.hlCell {
+    width: 80px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 28px;
+    text-align: center;    
+    float: left;
+}
+
+.vlCell {
+    width: 30px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 28px;
+    text-align: center;
+    float: left;
+}
+
+.main {
+    width: 706px;
+    height: 706px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float: left;
+}
