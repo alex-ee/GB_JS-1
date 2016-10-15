@@ -17,8 +17,8 @@ function eventClick(cell) {
             curr.innerText = selected.cell.innerText;
             selected.cell.innerText = '';
         } 
-            selected.cell.style.backgroundColor = selected.bgColor;
-            selected.cell = '';
+        selected.cell.style.backgroundColor = selected.bgColor;
+        selected.cell = '';
 
     } else if (curr.innerText.length != 0) {
         selected.cell = curr;
