@@ -32,11 +32,11 @@ function init() {
     document.body.innerHTML += '<div class="main" id="main"></div>';
     var main = document.getElementById('main');
 
-    main.innerHTML += '<div class="hLegend" id="hLegend1"></div>';
-    main.innerHTML += '<div class="vLegend" id="vLegend1"></div>';
+    main.innerHTML += '<div class="hLegend"></div>';
+    main.innerHTML += '<div class="vLegend"></div>';
     main.innerHTML += '<div class="board" id="board"></div>';
-    main.innerHTML += '<div class="vLegend" id="vLegend2"></div>';
-    main.innerHTML += '<div class="hLegend" id="hLegend2"></div>';
+    main.innerHTML += '<div class="vLegend"></div>';
+    main.innerHTML += '<div class="hLegend"></div>';
 
     var hLegend = document.getElementsByClassName('hLegend');
     for (var i = 0; i < 2; i++) {
