@@ -20,7 +20,7 @@ function eventClick(cell) {
             selected.cell.style.backgroundColor = selected.bgColor;
             selected.cell = '';
 
-    } else {
+    } else if (curr.innerText.length != 0) {
         selected.cell = curr;
         selected.bgColor = curr.style.backgroundColor;
         curr.style.backgroundColor = 'red';
