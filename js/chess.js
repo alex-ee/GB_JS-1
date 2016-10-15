@@ -13,11 +13,9 @@ function eventClick(cell) {
     var curr = document.getElementById(cell);
 
     if (selected.cell != '') {
-        if (selected.cell.id != cell) {
-            if (curr.innerText.length == 0) {
-                curr.innerText = selected.cell.innerText;
-                selected.cell.innerText = '';
-            }            
+        if (selected.cell.id != cell && curr.innerText.length == 0) {
+            curr.innerText = selected.cell.innerText;
+            selected.cell.innerText = '';
         } 
             selected.cell.style.backgroundColor = selected.bgColor;
             selected.cell = '';
