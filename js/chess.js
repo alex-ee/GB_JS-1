@@ -66,66 +66,7 @@ function init() {
             var tmp = '';
             tmp = this.val = this.val == light ? dark : light;
 
-            switch (this.row) {
-                case 8:
-                    switch (this.col) {
-                        case 1:
-                        case 8:
-                            tmp = tmp.replace(/></g, '>&#9820;<');
-                            break;
-
-                        case 2:
-                        case 7:
-                            tmp = tmp.replace(/></g, '>&#9822;<');
-                            break;
-
-                        case 3:
-                        case 6:
-                            tmp = tmp.replace(/></g, '>&#9821;<');
-                            break;
-
-                        case 4:
-                        case 5:
-                            tmp = this.val == light ? tmp.replace(/></g, '>&#9818;<') : tmp.replace(/></g, '>&#9819;<');
-                            break;
-                    }
-                    break;
-
-                case 7:
-                    tmp = tmp.replace(/></g, '>&#9823;<');
-                    break;
-
-                case 2:
-                    tmp = tmp.replace(/></g, '>&#9817;<');
-                    break;
-
-                case 1:
-                    switch (this.col) {
-                        case 1:
-                        case 8:
-                            tmp = tmp.replace(/></g, '>&#9814;<');
-                            break;
-
-                        case 2:
-                        case 7:
-                            tmp = tmp.replace(/></g, '>&#9816;<');
-                            break;
-
-                        case 3:
-                        case 6:
-                            tmp = tmp.replace(/></g, '>&#9815;<');
-                            break;
-
-                        case 4:
-                        case 5:
-                            tmp = this.val == light ? tmp.replace(/></g, '>&#9813;<') : tmp.replace(/></g, '>&#9812;<');
-                            break;
-                    }
-                    break;
-                
-                default:
-                    break;                
-            }
+            tmp = placeFigure(this, tmp);
 
             if (++this.col == 9) {
                 this.row--;
@@ -140,6 +81,71 @@ function init() {
 
             return tmp;
         }
+    }
+
+    function placeFigure(obj, tmp) {
+        switch (obj.row) {
+            case 8:
+                switch (obj.col) {
+                    case 1:
+                    case 8:
+                        tmp = tmp.replace(/></g, '>&#9820;<');
+                        break;
+
+                    case 2:
+                    case 7:
+                        tmp = tmp.replace(/></g, '>&#9822;<');
+                        break;
+
+                    case 3:
+                    case 6:
+                        tmp = tmp.replace(/></g, '>&#9821;<');
+                        break;
+
+                    case 4:
+                    case 5:
+                        tmp = obj.val == light ? tmp.replace(/></g, '>&#9818;<') : tmp.replace(/></g, '>&#9819;<');
+                        break;
+                }
+                break;
+
+            case 7:
+                tmp = tmp.replace(/></g, '>&#9823;<');
+                break;
+
+            case 2:
+                tmp = tmp.replace(/></g, '>&#9817;<');
+                break;
+
+            case 1:
+                switch (obj.col) {
+                    case 1:
+                    case 8:
+                        tmp = tmp.replace(/></g, '>&#9814;<');
+                        break;
+
+                    case 2:
+                    case 7:
+                        tmp = tmp.replace(/></g, '>&#9816;<');
+                        break;
+
+                    case 3:
+                    case 6:
+                        tmp = tmp.replace(/></g, '>&#9815;<');
+                        break;
+
+                    case 4:
+                    case 5:
+                        tmp = obj.val == light ? tmp.replace(/></g, '>&#9813;<') : tmp.replace(/></g, '>&#9812;<');
+                        break;
+                }
+                break;
+            
+            default:
+                break;                
+        }
+
+        return tmp;
     }
 
     var j = 0;
